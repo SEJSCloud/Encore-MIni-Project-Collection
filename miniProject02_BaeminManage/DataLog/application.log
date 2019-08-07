@@ -1,0 +1,9 @@
+[2019-07-15 14:20:01]  INFO (log4j.Log4j - logTest:10) - information
+[2019-07-15 14:22:32]  INFO (log4j.Log4j - logTest:10) - information
+[2019-07-15 14:22:33]  INFO (log4j.Log4j - logTest:10) - information
+[2019-07-15 14:22:33]  INFO (log4j.Log4j - logTest:10) - information
+[2019-07-15 14:23:37]  INFO (log4j.Log4j - logTest:10) - information
+[2019-07-15 14:23:37]  INFO (log4j.Log4j - main:21) - info
+[2019-07-15 14:23:37]  WARN (log4j.Log4j - main:22) - warn
+[2019-07-15 14:23:37] ERROR (log4j.Log4j - main:23) - error
+[2019-07-15 14:23:37] FATAL (log4j.Log4j - main:24) - fatal
