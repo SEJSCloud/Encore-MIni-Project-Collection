@@ -1,4 +1,4 @@
-Mini Project : BookStoreProject
+Mini Project Collection
 ==============
 ### 1. miniProject01 Description
 > Subject : 과일재고관리 <br>
@@ -19,3 +19,7 @@ Mini Project : BookStoreProject
 
 > Entitiy Diagram : ERDiagram -bookStoreProject.png <br>
 > ERMaster : ERMaster -bookStoreProject.png 
+
+### mini 1. miniProject03 Description
+
+### mini 2. miniProject03 Description
