@@ -1,0 +1,117 @@
+CREATE or REPLACE TYPE dataarray2 
+AS VARRAY(3) OF VARCHAR2(10); 
+/ 
+
+
+create or replace function input_label(v_job emp01.job%type)
+return varchar2
+is   
+   v_ename emp01.ename%type;
+   v_job2 emp01.job%type; 
+   v_sal emp01.sal%type;
+   dataall dataarray;
+   returnData varchar2(100);
+begin
+   select ename, job, sal
+      into v_ename, v_job2, v_sal
+   from emp01
+   where job = v_job2;
+   
+   -- 사용자 정의 타입 배열에 검색된 데이터를 하나하나 저장
+   dataall := dataarray(v_ename, v_job2, v_sal);
+   
+   -- 배열의 데이터를 활용하는 단순 확인
+   dbms_output.put_line(dataall(1) || ' ' || dataall(2) || ' ' || dataall(3));
+   
+   -- 하나의 varchar2 변수에 모든 데이터 결합해서 반환
+   returnData := dataall(1) || ' ' || dataall(2) || ' ' || dataall(3);
+   
+   return returnData;
+end;
+/
+
+
+
+
+
+
+set serveroutput on 
+set linesize 200
+set pagesize 200
+
+
+/* 시나리오
+1. function 사용 : ~ 직업을 받아서 연봉을 10% 올려주는 함수를 만들 것이다아 ~
+   1-1) 연봉 올린 사람 이름, 직업, 현재 연봉만 보여주는거
+2. cursor 사용 : deptno에 따라서 라벨 붙히기 10번 - 위험 / 20번, 40번 - ' ' / 30번 - 우수
+*/
+
+-- 1
+create or replace function update_sal1(v_job emp01.job%type)
+return emp01.job%type
+is
+   pragma autonomous_transaction;
+   v_tmp emp01.job%type;
+begin
+	update emp01 set sal = sal*1.1
+	where job = v_job;
+	commit;
+	
+	select distinct(job)
+		into v_tmp
+	from emp
+	where job = v_job;
+	
+	return v_tmp;
+end;
+/
+
+select * from emp01;
+select update_sal1('CLERK') from dual;
+select * from emp01;
+
+
+
+-- 1-1
+create or replace type emp_obj is object (ename varchar2(10), job varchar2(10), sal number);
+/
+
+create or replace type emp_tab is table of emp_obj;
+/
+
+create or replace function get_job(v_job emp01.job%type)
+return emp_tab
+is
+   l_emp_tab emp_tab := emp_tab();
+   n integer := 0;
+begin
+   for r in (select ename, job, sal from emp01 where job = v_job)
+   loop
+      l_emp_tab.extend;
+      n := n + 1;
+      l_emp_tab(n) := emp_obj(r.ename, r.job, r.sal);
+   end loop;
+   return l_emp_tab;
+end;
+/
+
+select * from table(get_job('CLERK'));
+
+-- 2
+declare
+   cursor emp_cursor
+   is 
+      select deptno from emp01;    
+begin
+   for v_deptno in emp_cursor loop
+   
+      if(v_deptno.deptno = 10) then
+         dbms_output.put_line('위험 ' || v_deptno.deptno);
+      elsif(v_deptno.deptno = 30) then
+         dbms_output.put_line('우수 ' || v_deptno.deptno);
+      else
+         dbms_output.put_line('보통 ' || v_deptno.deptno);
+      end if;   
+   end loop;   
+end;
+/
