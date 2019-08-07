@@ -23,7 +23,3 @@ Mini Project Collection
 ### // 1. mini_miniProject01-MakingSQLproblem.txt Description
 > Subject : SQL <br>
 > Main text : Making a file including SQLproblem and brief scenario with partner <br>
-
-### // 2. mini_miniProject02-MakingSQLproblem.txt Description
-> Subject : SQL <br>
-> Main text : Making a file including SQLproblem and brief scenario with partner
