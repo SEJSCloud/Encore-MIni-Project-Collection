@@ -20,10 +20,10 @@ Mini Project Collection
 > Entitiy Diagram : ERDiagram -bookStoreProject.png <br>
 > ERMaster : ERMaster -bookStoreProject.png <br>
 
-### mini 1. mini_miniProject01-MakingSQLproblem.txt Description
+### // 1. mini_miniProject01-MakingSQLproblem.txt Description
 > Subject : SQL <br>
 > Main text : Making a file including SQLproblem and brief scenario with partner <br>
 
-### mini 2. mini_miniProject02-MakingSQLproblem.txt Description
+### // 2. mini_miniProject02-MakingSQLproblem.txt Description
 > Subject : SQL <br>
 > Main text : Making a file including SQLproblem and brief scenario with partner
