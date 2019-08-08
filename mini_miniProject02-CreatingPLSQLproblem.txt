@@ -1,0 +1,152 @@
+/*	시나리오
+	인사관리 부서에서 새로운 직원관리 프로그램을 도입하기로 했다.
+	직원의 연봉이 오르거나, 퇴직하는 직원들을 관리할 때 일일히 SQL 쿼리를 작성하는 것이 반복적인 작업이기 때문에 비효율적이라는 생각이 들어
+	자주 사용하는 기능들에 대해서는 SQL Function을 만들어 사용하기로 했다.
+	인사관리 부서에서 자주 사용하는 기능들은 다음과 같다.
+	
+	1) 연봉 인상에 해당하는 직책을 가진 직원들의 연봉 인상
+	2) 현재 부서별 성과에 따른 부서 등급 확인
+	3) 퇴사한 직원들의 정보를 추후 관리를 위해 따로 백업
+*/
+
+set serveroutput on
+drop table emp01;
+create table emp01 as select * from emp;
+
+-- 1)
+create or replace function update_sal1(v_job emp01.job%type)
+return emp01.job%type
+is
+   pragma autonomous_transaction;
+   v_tmp emp01.job%type;
+begin
+	update emp01 set sal = sal*1.1
+	where job = v_job;
+	commit;
+	
+	select distinct(job)
+		into v_tmp
+	from emp
+	where job = v_job;
+	
+	return v_tmp;
+end;
+/
+
+
+create or replace type emp_obj is object (ename varchar2(10), job varchar2(10), sal number);
+/
+
+create or replace type emp_tab is table of emp_obj;
+/
+
+
+create or replace function get_job(v_job emp01.job%type)
+return emp_tab
+is
+   pragma autonomous_transaction;
+    l_emp_tab emp_tab := emp_tab();
+    n integer := 0;
+   v_job2 varchar2(20);
+begin
+   select update_sal1(v_job) 
+      into v_job2
+   from dual;
+   commit;
+    for r in (select ename, job, sal from emp01 where job = v_job)
+    loop
+   
+      l_emp_tab.extend;
+      n := n + 1;
+      l_emp_tab(n) := emp_obj(r.ename, r.job, r.sal);
+    end loop;
+    return l_emp_tab;
+end;
+/
+
+-- 테스트 문장
+
+select get_job('CLERK') from dual;
+
+-- 2)
+declare
+	cursor emp_cursor
+	is 
+		select deptno from emp; 	
+begin
+	for v_deptno in emp_cursor loop
+	
+		if(v_deptno.deptno = 10) then
+			dbms_output.put_line('위험 ' || v_deptno.deptno);
+		elsif(v_deptno.deptno = 30) then
+			dbms_output.put_line('우수 ' || v_deptno.deptno);
+		else
+			dbms_output.put_line('보통 ' || v_deptno.deptno);
+		end if;	
+	end loop;	
+end;
+/
+
+-- 3)
+drop table retire;
+create table retire (
+   ename varchar2(20),
+   job varchar2(20),
+   deptno number
+);
+
+create or replace function insert_retire(v_ename varchar2, v_job varchar2, v_deptno number)
+return emp01.ename%type
+is
+   pragma autonomous_transaction;
+begin
+   insert into
+   retire values (v_ename, v_job, v_deptno);
+   commit;
+   
+   return v_ename;
+end;
+/
+
+create or replace function delete_emp01(v_empno number)
+return emp01.empno%type
+is
+   pragma autonomous_transaction;
+begin
+   delete
+   from emp01
+   where empno = v_empno;
+   
+   commit;
+   return v_empno;
+end;
+/
+
+create or replace function save_retire(v_empno number, v_ename varchar2, v_job varchar2, v_deptno number)
+return number
+is
+   v_ename2 varchar2(20);
+   v_empno2 number;
+   pragma autonomous_transaction;
+   
+begin
+   begin
+      select insert_retire(v_ename, v_job, v_deptno)
+            into v_ename2
+      from dual;
+
+   end;
+   begin
+      select delete_emp01(v_empno)
+         into v_empno2
+      from dual;
+
+   end;
+   return v_empno2;
+end;
+/
+
+-- 테스트 문장
+select * from retire;
+select save_retire(7369, 'SMITH', 'CLERK', 20) from dual;
+select * from retire;
