@@ -44,10 +44,10 @@ Mini Project Collection
 > Subject : 서울시 열린데이터 광장의 고민거리 통계를 이용한 인사이트 도출 및 차트 그리기 <br>
 > Language : Java, Java Script, Html, CSS <br>
 > Library : Vue.js, axios, Google Chart, Word Cloud(anychart) <br>
-> DB : Elatstic Search
-> reference site : https://www.csvjson.com/csv2json
+> DB : Elatstic Search <br>
+> reference site : https://www.csvjson.com/csv2json <br>
 > data Site : 서울시 열린데이터 광장(https://data.seoul.go.kr/dataList/datasetView.do?infId=10416&srvType=S&serviceKind=2&currentPageNo=1&searchValue=&searchKey=null) <br>
-> Description : 
+> Description :  <br>
 
 
 ### 1. SQLproblem.txt Description
