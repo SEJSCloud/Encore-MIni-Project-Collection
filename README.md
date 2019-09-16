@@ -2,7 +2,7 @@ Mini Project Collection
 ==============
 ### 1. miniProject01 Fruits
 
-> Subject : 과일재고관리 <br>
+> <b>Subject</b> : 과일재고관리 <br>
 > Language : Java <br>
 > Description : 간단하게 만들어본 가상의 재고 관리 로직 <br>
 
