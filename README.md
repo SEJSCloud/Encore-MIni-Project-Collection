@@ -3,6 +3,7 @@ Mini Project Collection
 ### 1. miniProject01 Description
 > Subject : 과일재고관리 <br>
 > Language : Java <br>
+> Description : 
 
 ### 2. miniProject02 Description
 > Subject : 배달의민족 가상DB관리 <br>
