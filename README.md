@@ -1,11 +1,13 @@
 Mini Project Collection
 ==============
 ### 1. miniProject01 Fruits
+
 > Subject : 과일재고관리 <br>
 > Language : Java <br>
 > Description : 간단하게 만들어본 가상의 재고 관리 로직 <br>
 
 ### 2. miniProject02 BaeminDB
+
 > Subject : 배달의민족 가상DB관리 <br>
 > Language : Java <br>
 > Library : Lombok, Json <br>
@@ -37,10 +39,23 @@ Mini Project Collection
 > ERMaster : miniProject04_Document/dataSchoolERD.erm <br>
 > 요구사항 정의서 : miniProject04_Document/Requirement Document.pdf<br>
 
+### 5. miniProject05 Analysis about Personal Worry
+
+> Subject : 서울시 열린데이터 광장의 고민거리 통계를 이용한 인사이트 도출 및 차트 그리기 <br>
+> Language : Java, Java Script, Html, CSS <br>
+> Library : Vue.js, axios, Google Chart, Word Cloud(anychart) <br>
+> DB : Elatstic Search
+> reference site : https://www.csvjson.com/csv2json
+> data Site : 서울시 열린데이터 광장(https://data.seoul.go.kr/dataList/datasetView.do?infId=10416&srvType=S&serviceKind=2&currentPageNo=1&searchValue=&searchKey=null) <br>
+> Description : 
+
+
 ### 1. SQLproblem.txt Description
+
 > Subject : SQL <br>
 > Description : 간단한 시나리오를  SQL 문제 만들기 <br>
 
 ### 2. PLSQLproblem.txt Description
+
 > Subject : PLSQL <br>
 > Description : 간단한 시나리오를 포함한 PLSQL문제 만들기 <br>
