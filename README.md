@@ -23,8 +23,8 @@ Mini Project Collection
 
 ### // 1. mini_miniProject01-MakingSQLproblem.txt Description
 > Subject : SQL <br>
-> Main text : Making a file including SQLproblem and brief scenario with partner <br>
+> Description : 간단한 SQL 문제 만들기 <br>
 
 ### // 2. mini_miniProject02-MakingPLSQLproblem.txt Description
 > Subject : PLSQL <br>
-> Main text : Making a file including PLSQLproblem and brief scenario with partner <br>
+> Description : 간단한 PLSQL문제 만들기 <br>
