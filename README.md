@@ -50,12 +50,12 @@ Mini Project Collection
 > Description :  <br>
 
 
-### 1. SQLproblem.txt Description
+### SQLProblems/SQLproblem.txt Description
 
 > Subject : SQL <br>
 > Description : 간단한 시나리오를  SQL 문제 만들기 <br>
 
-### 2. PLSQLproblem.txt Description
+### SQLProblems/PLSQLproblem.txt Description
 
 > Subject : PLSQL <br>
 > Description : 간단한 시나리오를 포함한 PLSQL문제 만들기 <br>
