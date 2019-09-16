@@ -29,8 +29,13 @@ Mini Project Collection
 > Language : Java, Java Script, Html, CSS <br>
 > Library : Lombok, Jsoup, Jdbc, Json, xHttp비동기,  <br>
 > DBMS : Oracle <br>
-> Crawling Site : 네이버 뉴스 <br>
+> Web : Servlet, JSP <br>
+> Crawling Site : 네이버 뉴스(https://search.naver.com/search.naver?where=news&sm=tab_jum&query=데이터) <br>
 > Description : Jsoup을 이용하여 알라딘의 신규서적 리스트를 크롤링하고 그 정보를 바탕으로 JDBC로 DB와 연동하여 exception처리를 포함한 CRUD로직으로 제품 정보 관리 시스템을 구현하기 위해 노력<br>
+
+> ppt자료 : DataSchool_PPT.pdf <br>
+> ERMaster : dataSchoolERD.erm <br>
+> 요구사항 정의서 : Requirement Document.pdf<br>
 
 ### // 1. mini_miniProject01-MakingSQLproblem.txt Description
 > Subject : SQL <br>
