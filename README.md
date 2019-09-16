@@ -48,7 +48,8 @@ Mini Project Collection
 > <b>Library</b> : Vue.js, axios, Google Chart, Word Cloud(anychart) <br>
 > <b>DB</b> : Elatstic Search <br>
 > <b>reference site</b> : https://www.csvjson.com/csv2json <br>
-> <b>data Site</b> : 서울시 열린데이터 광장(https://data.seoul.go.kr/dataList/datasetView.do?infId=10416&srvType=S&serviceKind=2&currentPageNo=1&searchValue=&searchKey=null) <br>
+서울시 열린데이터 광장(https://data.seoul.go.kr/dataList/datasetView.do?infId=10416&srvType=S&serviceKind=2&currentPageNo=1&searchValue=&searchKey=null) <br>
+
 > <b>Description</b> :  <br>
 
 
