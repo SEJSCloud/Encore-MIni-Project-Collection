@@ -31,7 +31,7 @@ Mini Project Collection
 > DBMS : Oracle <br>
 > Web : Servlet, JSP <br>
 > Crawling Site : 네이버 뉴스(https://search.naver.com/search.naver?where=news&sm=tab_jum&query=데이터) <br>
-> Description : Jsoup을 이용하여 알라딘의 신규서적 리스트를 크롤링하고 그 정보를 바탕으로 JDBC로 DB와 연동하여 exception처리를 포함한 CRUD로직으로 제품 정보 관리 시스템을 구현하기 위해 노력<br>
+> Description : 점점 높아지고 있는 데이터관련 직무의 사람들의 관심도와 필요성에 발맞춰 자격증 관련 데이터를 제공하고 공부할 수 있게끔 만들어주는 데이터 관련 자격증 학습 사이트<br>
 
 > ppt자료 : DataSchool_PPT.pdf <br>
 > ERMaster : dataSchoolERD.erm <br>
