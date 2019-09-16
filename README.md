@@ -25,8 +25,8 @@ Mini Project Collection
 
 ### // 1. mini_miniProject01-MakingSQLproblem.txt Description
 > Subject : SQL <br>
-> Description : 간단한 SQL 문제 만들기 <br>
+> Description : 간단한 시나리오를  SQL 문제 만들기 <br>
 
 ### // 2. mini_miniProject02-MakingPLSQLproblem.txt Description
 > Subject : PLSQL <br>
-> Description : 간단한 PLSQL문제 만들기 <br>
+> Description : 간단한 시나리오를 포함한 PLSQL문제 만들기 <br>
