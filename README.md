@@ -34,6 +34,7 @@ Mini Project Collection
 > Web : Servlet, JSP, ajax <br>
 > Crawling Site : 네이버 뉴스(https://search.naver.com/search.naver?where=news&sm=tab_jum&query=데이터) <br>
 > Description : 점점 높아지고 있는 데이터관련 직무의 사람들의 관심도와 필요성에 발맞춰 자격증 관련 데이터를 제공하고 공부할 수 있게끔 만들어주는 데이터 관련 자격증 학습 사이트<br>
+> Used for Cooperation : GitHub + Sourcetree
 
 > ppt자료 :  miniProject04_Document/DataSchool_PPT.pdf <br>
 > ERMaster : miniProject04_Document/dataSchoolERD.erm <br>
