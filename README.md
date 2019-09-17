@@ -1,4 +1,4 @@
-Mini Project Collection
+Mini Project Collection<br>(Encore에서 배우며 진행했던 프로젝트들의 모음입니다.)
 ==============
 ### 1. miniProject01 Fruits
 
