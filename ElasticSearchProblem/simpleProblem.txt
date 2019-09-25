@@ -1,0 +1,217 @@
+
+# 1번째 단서
+# bank index의 state를 group_by해서 각 state의 평균 잔고값이 28위인 state
+POST /bank/_search
+{
+  "size": 0,
+  "aggs": {
+    "group_by_state": {
+      "terms": {
+        "field": "state.keyword",
+        "size": 100, 
+        "order": {
+          "average_balance": "desc"
+        }
+      },
+      "aggs": {
+        "average_balance": {
+          "avg": {
+            "field": "balance"
+          }
+        }
+      }
+    }
+  }
+}
+
+# 2번째 단서
+# 나이가 20대인 사람
+POST /bank/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "match": {
+            "state": "TX"
+          }
+        },
+        {
+          "range": {
+            "age": {
+              "gte": "20",
+              "lte": "29"
+            }
+          }
+        }
+      ],
+      "must_not": [],
+      "should": []
+    }
+  },
+  "from": 0,
+  "size": 1000,
+  "sort": [],
+  "aggs": {}
+}
+
+# 3번째 단서
+# de라는 정보가 그 사람의 흔적
+POST /bank/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "query_string": {
+            "query": "*de*",
+            "fields": [
+              "firstname",
+              "lastname",
+              "address",
+              "employer",
+              "email",
+              "city"
+            ]
+          }
+        },
+        {
+          "match": {
+            "state": "TX"
+          }
+        },
+        {
+          "range": {
+            "age": {
+              "gte": "20",
+              "lte": "29"
+            }
+          }
+        }
+      ],
+      "must_not": [],
+      "should": []
+    }
+  },
+  "from": 0,
+  "size": 1000,
+  "sort": [
+    {
+      "account_number": "desc"
+    }
+  ],
+  "aggs": {}
+}
+
+# 4번째 단서
+# 성별이 여자인 사람
+POST /bank/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "query_string": {
+            "query": "*de*",
+            "fields": [
+              "firstname",
+              "lastname",
+              "address",
+              "employer",
+              "email",
+              "city"
+            ]
+          }
+        },
+        {
+          "match": {
+            "state": "TX"
+          }
+        },
+        {
+          "match": {
+            "gender": "F"
+          }
+        },
+        {
+          "range": {
+            "age": {
+              "gte": "20",
+              "lte": "29"
+            }
+          }
+        }
+      ],
+      "must_not": [],
+      "should": []
+    }
+  },
+  "from": 0,
+  "size": 1000,
+  "sort": [
+    {
+      "account_number": "desc"
+    }
+  ],
+  "aggs": {}
+}
+
+# 5번째 단서
+# 회사의 이름이 t로 시작
+POST /bank/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "prefix": {
+            "employer": {
+              "value": "t"
+            }
+          }
+        },
+        {
+          "query_string": {
+            "query": "*de*",
+            "fields": [
+              "firstname",
+              "lastname",
+              "address",
+              "employer",
+              "email",
+              "city"
+            ]
+          }
+        },
+        {
+          "match": {
+            "state": "TX"
+          }
+        },
+        {
+          "match": {
+            "gender": "F"
+          }
+        },
+        {
+          "range": {
+            "age": {
+              "gte": "20",
+              "lte": "29"
+            }
+          }
+        }
+      ],
+      "must_not": [],
+      "should": []
+    }
+  },
+  "from": 0,
+  "size": 1000,
+  "sort": [
+    {
+      "account_number": "desc"
+    }
+  ],
+  "aggs": {}
+}
