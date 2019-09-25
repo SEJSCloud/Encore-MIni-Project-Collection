@@ -66,12 +66,12 @@ Mini Project Collection<br>(Encore에서 배우며 진행했던 프로젝트들�
 DB와 연동하여 데이터를 CRUD하는 작업코드 만들기<br>
 > <b>원본데이터</b> : miniProject06_JPA/info/유동인구csv.txt + 지역정보 테이블csv.txt <br>
 
-### SQLProblems/SQLproblem.txt Description
+### SQLProblems/SQLproblem.txt
 
 > <b>Subject</b> : SQL <br>
 > <b>Description</b> : 간단한 시나리오를  SQL 문제 만들기 <br>
 
-### SQLProblems/PLSQLproblem.txt Description
+### SQLProblems/PLSQLproblem.txt
 
 > <b>Subject</b> : PLSQL <br>
 > <b>Description</b> : 간단한 시나리오를 포함한 PLSQL문제 만들기 <br>
