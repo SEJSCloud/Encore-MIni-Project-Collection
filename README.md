@@ -54,8 +54,17 @@ Mini Project Collection<br>(Encore에서 배우며 진행했던 프로젝트들�
 * anychart (https://www.anychart.com/)<br>
 
 > <b>Description</b> : Elastic Search에서 데이터를 가져와 google 차트와 WordCloud(anyChart)에 맞게끔<br>
-데이터 전처리 과정을 거친뒤 활용하여 실제로 웹페이지상에 차트 그려보기
+데이터 전처리 과정을 거친뒤 활용하여 실제로 웹페이지상에 차트 그려보기 <br>
 
+### 6. miniProject06 JPA
+
+> <b>Subject</b> : JPA활용 <br>
+> <b>Language</b> : Java <br>
+> <b>Library</b> : Lombok, JPA <br>
+> <b>DBMS</b> : Oracle <br>
+> <b>Description</b> : JPA를활용하여 테이블간의 관계를 모델링하고<br>
+DB와 연동하여 데이터를 CRUD하는 작업코드 만들기<br>
+> <b>원본데이터</b> : miniProject06_JPA/info/유동인구csv.txt + 지역정보 테이블csv.txt <br>
 
 ### SQLProblems/SQLproblem.txt Description
 
