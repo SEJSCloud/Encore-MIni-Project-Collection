@@ -46,12 +46,15 @@ Mini Project Collection<br>(Encore에서 배우며 진행했던 프로젝트들�
 > <b>Subject</b> : 서울시 열린데이터 광장의 고민거리 통계를 이용한 인사이트 도출 및 차트 그리기 <br>
 > <b>Language</b> : Java, Java Script, Html, CSS <br>
 > <b>Library</b> : Vue.js, axios, Google Chart, Word Cloud(anychart) <br>
-> <b>DB</b> : Elatstic Search <br>
-> <b>reference site</b> : 
+> <b>NoSQL DB</b> : Elastic Search <br>
+> <b>Reference Site</b> : 
 * CSVJSON (https://www.csvjson.com/csv2json) <br>
 * 서울시 열린데이터 광장 (https://data.seoul.go.kr/dataList/datasetView.do?infId=10416&srvType=S&serviceKind=2&currentPageNo=1&searchValue=&searchKey=null) <br>
+* google차트 (https://developers.google.com/chart/) <br>
+* anychart (https://www.anychart.com/)<br>
 
-> <b>Description</b> :  <br>
+> <b>Description</b> : Elastic Search에서 데이터를 가져와 google 차트와 WordCloud(anyChart)에 맞게끔<br>
+데이터 전처리 과정을 거친뒤 활용하여 실제로 웹페이지상에 차트 그려보기
 
 
 ### SQLProblems/SQLproblem.txt Description
@@ -63,3 +66,9 @@ Mini Project Collection<br>(Encore에서 배우며 진행했던 프로젝트들�
 
 > <b>Subject</b> : PLSQL <br>
 > <b>Description</b> : 간단한 시나리오를 포함한 PLSQL문제 만들기 <br>
+
+### ElasticSearchProblem/simpleProblem.txt
+
+> <b>Subject</b> ElasticSearch / Kibana <br>
+> <b>Description</b> Kibana를 활용하여 ElasticSearch에 들어가 있는 데이터를 이용해 정제하는 문제 만들기 <br>
+> <b>Reference</b> : https://raw.githubusercontent.com/elastic/elasticsearch/master/docs/src/test/resources/accounts.json <br>
