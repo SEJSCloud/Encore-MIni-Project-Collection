@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<style>
+html, body, #container {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+}
+#app{
+  width:100%;
+  height: 55px;
+}
+.bt{
+  width: 13.9%;
+  height: 100%;
+  background-color: black;
+  color: white;
+  font-size: 19px;
+  
+}
+.bt:hover{
+  width: 13.9%;
+  height: 100%;
+  background-color: white;
+  color: black;
+  font-size: 19px;
+}
+</style>
+  </head>
+<body>
+    <div id="app">
+        <button class="bt" v-on:click="drawChartOne('연령별')">연령별</button>
+        <button class="bt" v-on:click="drawChartOne('성별')">성별</button>
+        <button class="bt" v-on:click="drawChartOne('소득별')">소득별</button>
+        <button class="bt" v-on:click="drawChartOne('혼인상태별')">혼인상태별</button>
+        <button class="bt" v-on:click="drawChartOne('학력별')">학력별</button>
+        <button class="bt" v-on:click="drawChartOne('지역별')">지역별</button>
+        <button class="bt" v-on:click="drawChartOne('지역구별')">지역구별</button>
+    </div>
+    <div id="chart_div" style="width: 100%; height: 400px;"></div>
+    <div id="app2"></div>
+    <div id="container"></div>
+
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-tag-cloud.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        new Vue ({
+            el : "#app",
+            methods : {
+                drawChartOne : function(subject){
+                    axios.get("http://localhost:9200/concern1/_search?size=100&filter_path=hits.hits._source")
+                    .then(function(resData) {
+                        let dataKeys = []; // 구글차트 첫 행에 넣어줄 컬럼(키)
+                        let dataArray = []; // 가공 전 resData에서 전체 데이터를 담을 배열
+                        let btn = document.getElementById("app2"); // 소분류 버튼 생성할 곳 
+                        btn.innerHTML = null; // 소분류 버튼 초기화
+                        document.getElementById("container").innerHTML = "<span></span>";
+                        array= [];
+                        let firstLength = Object.keys(resData.data.hits.hits[0]._source).length;
+                        let secondLength = resData.data.hits.hits.length;
+                        
+
+                        // 최초 키(컬럼) 셋팅
+                        for(let j = 0; j < firstLength; j++){
+                            dataKeys.push(Object.keys(resData.data.hits.hits[0]._source)[j]);
+                        }
+                        // 전체 데이터 배열에 담기
+                        for(let i = 0; i < secondLength; i++){
+                            dataArray.push(Object.values(resData.data.hits.hits[i]._source));
+                        }
+                        
+                        // 배열에 필요없는 부분 지우기
+                        for(let k = 0; k < dataArray.length; k++){
+                            dataArray[k].splice(0,1);
+                        }
+                        
+                        // 전체 배열 데이터에서 대분류에 맞는 배열만 담기
+                        for(let l = 0; l < dataArray.length; l++ ){
+                          if(dataArray[l][0].includes(subject)){
+                            array.push(dataArray[l]);
+                          }
+                        }
+                        
+                        // 배열에서 필요 없는 부분 지우기 ( 년도, 합계 부분)
+                        for(let m = 0; m < array.length; m++){
+                          array[m].splice(0,1);
+                          array[m].splice(1,1);
+                        }
+                        
+                        // 소분류별 워드 클라우드 적용하기위한 전용 버튼 생성
+                        for(let i = 0; i < array.length; i++){
+                          btn.innerHTML += "<button class=\"bt\" onclick=\"dataWord('" + array[i][0] + "')\">" + array[i][0] + "</button>"
+                        }
+                        
+                        // 데이터상 "-"값을 0으로 치환
+                        for(let z = 0; z < array.length; z++){
+                          for(let x = 0; x < array[z].length; x++){
+                            if(array[z][x] == "-"){
+                              array[z][x] = 0;
+                            }
+                          }
+                        }
+                        // 키값중에 필요없는 값 지우기 ( 년도, 대분류, 소분류 )
+                        dataKeys.splice(0,2);
+                        dataKeys.splice(1,1);
+                        // 구글차트 데이터 형식에 맞게 키값 제일 첫 인덱스로 셋팅
+                        array.unshift(dataKeys);
+
+                        // 차트 데이터 폼에 맞게 string타입들 number타입으로 변경
+                        for(let a = 1; a < array.length; a++){
+                          for(let b = 1; b < array[0].length; b++){
+                            array[a][b] = Number(array[a][b]);
+                          }
+                        }
+                        drawVisualization(array,subject);
+                    }).catch(function(error) {
+                        console.log(" 에러낫어여", error)
+                    });
+                }
+            }
+        });
+        function dataWord(secondSbj){
+          anychart.onDocumentReady(function() {
+          var data = [];
+          for(let i = 0; i < array[0].length-1; i++){
+            data.push({"x": "", "value": 0});
+          }
+          let number = 0;
+          for(let b = 1; b < array.length; b++){
+            if(secondSbj == array[b][0]){
+              number = b;
+            }
+          }
+          for(let a = 0; a < data.length; a++){
+            data[a].x = array[0][a+1];
+            data[a].value = array[number][a+1];
+          }
+          drawWord(data);
+        });
+      }
+        google.charts.load("current", {"packages":["corechart"]});
+        function drawVisualization(dataArray,subject) {
+        var data = google.visualization.arrayToDataTable(dataArray);
+        var options = {
+            title : "개인별 고민거리 통계 (출처:서울특별시 스마트도시정책관 빅데이터담당관, 2014)",
+            vAxis: {title: "고민별 비율"},
+            hAxis: {title: subject},
+            seriesType: "bars",
+        };
+            var chart = new google.visualization.ComboChart(document.getElementById("chart_div"));
+            chart.draw(data, options);
+        }
+        
+        function drawWord(data){
+            document.getElementById("container").innerHTML = "<span></span>";
+            var chart = anychart.tagCloud(data);
+            chart.angles([0])
+            chart.container(document.getElementById("container"));
+            chart.draw();
+        }
+    </script>
+</body>
+</html>
