@@ -65,19 +65,3 @@ Mini Project Collection<br>(Encore에서 배우며 진행했던 프로젝트들�
 > <b>Description</b> : JPA를활용하여 테이블간의 관계를 모델링하고<br>
 DB와 연동하여 데이터를 CRUD하는 작업코드 만들기<br>
 > <b>원본데이터</b> : miniProject06_JPA/info/유동인구csv.txt + 지역정보 테이블csv.txt <br>
-
-### SQLProblems/SQLproblem.txt
-
-> <b>Subject</b> : SQL <br>
-> <b>Description</b> : 간단한 시나리오를  SQL 문제 만들기 <br>
-
-### SQLProblems/PLSQLproblem.txt
-
-> <b>Subject</b> : PLSQL <br>
-> <b>Description</b> : 간단한 시나리오를 포함한 PLSQL문제 만들기 <br>
-
-### ElasticSearchProblem/simpleProblem.txt
-
-> <b>Subject</b> ElasticSearch / Kibana <br>
-> <b>Description</b> Kibana를 활용하여 ElasticSearch에 들어가 있는 데이터를 이용해 정제하는 문제 만들기 <br>
-> <b>Reference</b> : https://raw.githubusercontent.com/elastic/elasticsearch/master/docs/src/test/resources/accounts.json <br>
