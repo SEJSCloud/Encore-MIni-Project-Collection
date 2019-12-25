@@ -45,7 +45,8 @@ Mini Project Collection<br>(Encore에서 배우며 진행했던 프로젝트들�
 
 > <b>Subject</b> : 서울시 열린데이터 광장의 고민거리 통계를 이용한 인사이트 도출 및 차트 그리기 <br>
 > <b>Language</b> : Java, Java Script, Html, CSS <br>
-> <b>Library</b> : Vue.js, axios, Google Chart, Word Cloud(anychart) <br>
+> <b>Web FrameWork</b> :  Vue.js <br>
+> <b>Library</b> : axios, Google Chart, Word Cloud(anychart) <br>
 > <b>NoSQL DB</b> : Elastic Search <br>
 > <b>Reference Site</b> : 
 * CSVJSON (https://www.csvjson.com/csv2json) <br>
